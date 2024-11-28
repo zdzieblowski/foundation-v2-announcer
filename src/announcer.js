@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import express from 'express';
 import asyncHandler from "express-async-handler";
 
-const api = 'http://5.75.235.4:3001/api/v2/evrmore';
+const api = 'http://localhost:3001/api/v2/evrmore';
 
 const endpoint = express();
 const endpoint_port = 3000;
@@ -20,12 +20,14 @@ endpoint.get('/EVR', asyncHandler(async (req, res) => {
   let configuration = await fetchData(`${api}/current/configuration`);
   let ports = await fetchData(`${api}/current/ports`);
   let blocks = await fetchData(`${api}/historical/blocks`);
+  let network = await fetchData(`${api}/current/network`)
 
   res.send(Object.assign([{
     'timestamp': metadata.body[0]['timestamp'],
     'miners': metadata.body[0]['miners'],
     'workers': metadata.body[0]['workers'],
     'hashrate': metadata.body[0]['hashrate'],
+    'height': network.body[0]['height'],
     'algoritm': configuration.body[0]['algorithm'],
     'minimum_payout': configuration.body[0]['minimumPayment'],
     'fee_percentage': configuration.body[0]['recipientFee']*100,
