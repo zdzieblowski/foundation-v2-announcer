@@ -1,0 +1,25 @@
+{
+    "name": "foundation-v2-announcer",
+    "version": "0.0.1",
+    "description": "Simplified API endpoint for Blinkhash's Foundation Server (V2)",
+    "main": "announcer.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zdzieblowski/foundation-v2-announcer.git"
+    },
+    "author": "Piotr Zdzieblowski",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/zdzieblowski/foundation-v2-announcer/issues"
+    },
+    "homepage": "https://github.com/zdzieblowski/foundation-v2-announcer#readme",
+    "dependencies": {
+        "express": "^4.21.0",
+        "express-async-handler": "^1.2.0",
+        "node-fetch": "^3.3.2"
+    }
+}
