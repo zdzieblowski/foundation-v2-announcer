@@ -2,10 +2,10 @@ import fetch from 'node-fetch';
 import express from 'express';
 import asyncHandler from "express-async-handler";
 
-const api = 'http://localhost:3001/api/v2/evrmore';
-
 const endpoint = express();
 const endpoint_port = 3000;
+
+var api;
 
 async function fetchData(url) {
   let req = await fetch(url);
@@ -15,7 +15,18 @@ async function fetchData(url) {
 
 // ANNOUNCER
 
-endpoint.get('/EVR', asyncHandler(async (req, res) => {
+endpoint.get('*', asyncHandler(async (req, res) => {
+  console.log(req.url);
+
+  if(req.url=='/EVR'){
+   api = 'http://localhost:3001/api/v2/evrmore';
+  }
+  else if(req.url=='/SKYDOGE'){
+   api = 'http://localhost:3001/api/v2/skydoge';
+  }
+
+  console.log(`${api}`);
+
   let metadata = await fetchData(`${api}/current/metadata`);
   let configuration = await fetchData(`${api}/current/configuration`);
   let ports = await fetchData(`${api}/current/ports`);
