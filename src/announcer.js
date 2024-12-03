@@ -25,8 +25,8 @@ endpoint.get('*', asyncHandler(async (req, res) => {
    api = 'http://localhost:3001/api/v2/evrmore';
    req_found = true;
   }
-  else if(req.url=='/FIRO') {
-   api = 'http://localhost:3001/api/v2/firo';
+  else if(req.url=='/GRLC') {
+   api = 'http://localhost:3001/api/v2/garlic';
    req_found = true;
   }
 
