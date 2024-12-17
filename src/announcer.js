@@ -29,6 +29,10 @@ endpoint.get('*', asyncHandler(async (req, res) => {
    api = 'http://localhost:3001/api/v2/garlic';
    req_found = true;
   }
+  else if(req.url=='/RTM') {
+   api = 'http://localhost:3001/api/v2/raptoreum';
+   req_found = true;
+  }
 
   if(req_found) {
     console.log(`${api}`);
@@ -36,7 +40,8 @@ endpoint.get('*', asyncHandler(async (req, res) => {
     let metadata = await fetchData(`${api}/current/metadata`);
     let configuration = await fetchData(`${api}/current/configuration`);
     let ports = await fetchData(`${api}/current/ports`);
-    let blocks = await fetchData(`${api}/historical/blocks`);
+    let blocks = await fetchData(`${api}/current/blocks`);
+    let hblocks = await fetchData(`${api}/historical/blocks`);
     let network = await fetchData(`${api}/current/network`)
 
     res.send(Object.assign([{
@@ -49,7 +54,8 @@ endpoint.get('*', asyncHandler(async (req, res) => {
       'minimum_payout': configuration.body[0]['minimumPayment'],
       'fee_percentage': configuration.body[0]['recipientFee']*100,
       'ports': ports.body,
-      'last_block_found': blocks.body.at(-1)
+      'last_block_found': blocks.body.at(-1),
+      'all_blocks': hblocks.body
     }]));
   }
 }));
