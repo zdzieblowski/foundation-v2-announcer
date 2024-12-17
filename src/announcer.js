@@ -29,6 +29,10 @@ endpoint.get('*', asyncHandler(async (req, res) => {
    api = 'http://localhost:3001/api/v2/garlic';
    req_found = true;
   }
+  else if(req.url=='/PPC') {
+   api = 'http://localhost:3001/api/v2/peercoin';
+   req_found = true;
+  }
   else if(req.url=='/RTM') {
    api = 'http://localhost:3001/api/v2/raptoreum';
    req_found = true;

@@ -1,1 +1,1 @@
-screen -S announcer ~/.nvm/versions/node/v22.8.0/bin/node announcer.js
+screen -S announcer -d -m ~/.nvm/versions/node/v22.8.0/bin/node announcer.js
